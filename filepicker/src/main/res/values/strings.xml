@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">انتخاب فایل</string>
+    <string name="file_thumbnail">File Thumbnail</string>
+    <string name="open_camera">باز کردن دوربین</string>
+    <string name="done">انتخاب</string>
+    <string name="selection_count">%1$d/%2$d</string>
+    <string name="permission_not_given">Permission not given</string>
+</resources>
