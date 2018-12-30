@@ -1,1 +1,1 @@
-include ':app',':Fancy'
+include ':app',':Skelton',':library', ':prettydialog', ':universalvideoview', ':sundatepicker', ':filepicker', ':Fancy'

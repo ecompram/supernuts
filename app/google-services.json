@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "471748094551",
+    "firebase_url": "https://supernuts-1358.firebaseio.com",
+    "project_id": "supernuts-1358",
+    "storage_bucket": "supernuts-1358.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:471748094551:android:05356cad5c87554e",
+        "android_client_info": {
+          "package_name": "com.parsjavid.supernuts"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "471748094551-1h30a548t216m8lggumofhoa7lrue26j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.parsjavid.supernuts",
+            "certificate_hash": "3e2dbc304f0e1f31b23dfab8224d3f72572a11c6"
+          }
+        },
+        {
+          "client_id": "471748094551-td5r3grb455t49pdklbkeg1sb2msp6ub.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVhHihyLSVYvCvqjQwlXNxoGrf-OHCBhE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "471748094551-td5r3grb455t49pdklbkeg1sb2msp6ub.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

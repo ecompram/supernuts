@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.parsjavid.supernuts.Application;
+
 import java.util.HashMap;
 import java.util.Map;
 

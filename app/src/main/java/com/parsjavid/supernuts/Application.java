@@ -15,6 +15,7 @@ import android.view.animation.AnimationUtils;
 
 import com.github.aakira.expandablelayout.Utils;
 import com.parsjavid.supernuts.di.AppModule;
+import com.parsjavid.supernuts.di.DaggerMainComponent;
 import com.parsjavid.supernuts.di.ImageLoaderMoudle;
 import com.parsjavid.supernuts.di.MainComponent;
 import com.parsjavid.supernuts.di.NetModule;

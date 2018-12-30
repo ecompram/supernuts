@@ -51,6 +51,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jaiselrahman.filepicker.activity.CustomTypefaceSpan;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.utils.DiskCacheUtils;
 import com.nostra13.universalimageloader.utils.MemoryCacheUtils;
@@ -299,11 +300,11 @@ public class HSH {
             dialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                 @Override
                 public void onClick(SweetAlertDialog sDialog) {
-                    if (!Settings.canDrawOverlays(ac)) {
-                        Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-                                Uri.parse("package:" + ac.getPackageName()));
-                        ac.startActivityForResult(intent, 123);
-                    }
+//                    if (!Settings.canDrawOverlays(ac)) {
+//                        Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+//                                Uri.parse("package:" + ac.getPackageName()));
+//                        ac.startActivityForResult(intent, 123);
+//                    }
                     dialog.dismiss();
                 }
             });
@@ -481,7 +482,7 @@ public class HSH {
         ftx.setCustomAnimations(R.anim.slide_in_right,
                 R.anim.slide_out_left, R.anim.slide_in_left,
                 R.anim.slide_out_right);
-        ftx.replace(R.id.frame, fragment, fragmentTag);
+        //ftx.replace(R.id.frame, fragment, fragmentTag);
         ftx.commit();
     }
 }

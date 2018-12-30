@@ -8,7 +8,14 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/Fancy" />
+            <option value="$PROJECT_DIR$/Skelton" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/filepicker" />
+            <option value="$PROJECT_DIR$/library" />
+            <option value="$PROJECT_DIR$/prettydialog" />
+            <option value="$PROJECT_DIR$/sundatepicker" />
+            <option value="$PROJECT_DIR$/universalvideoview" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
