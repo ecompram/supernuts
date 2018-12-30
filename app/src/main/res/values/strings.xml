@@ -3,4 +3,6 @@
     <string name="login">ورود</string>
     <string name="Mobile">موبایل</string>
     <string name="Code">کد دریافتی</string>
+    <string name="SmsCode">SmsCode</string>
+    <string name="mobile">Mobile</string>
 </resources>
