@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.parsjavid.supernuts.Application;
 import com.parsjavid.supernuts.R;
 import com.parsjavid.supernuts.di.HSH;
@@ -24,6 +25,7 @@ import com.parsjavid.supernuts.di.HSH;
 import java.util.HashMap;
 import java.util.Map;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -90,7 +92,23 @@ public class LoginActivity extends BaseActivity{
         if(mobile.equals("") || !mobile.startsWith("09") || mobile.length()!=11){
             HSH.getInstance().showtoast(LoginActivity.this,"لطفا شماره موبایل معتبر وارد نمایید.");
         }else{
+            final String PN=((EditText)findViewById(R.id.et_mobile)).getText().toString().trim();
+            final SweetAlertDialog dialog=new SweetAlertDialog(LoginActivity.this,SweetAlertDialog.NORMAL_TYPE);
+            dialog.setTitleText(PN);
+            dialog.setContentText("شماره موبایل صحیح است؟");
+            dialog.setConfirmText("بله");
+            dialog.setCancelText("خیر");
+            dialog.setConfirmClickListener((SweetAlertDialog sDialog)->{
+               et_mobile.setEnabled(false);
+               progressBar.setVisibility(View.VISIBLE);
+               view.setEnabled(false);
+               params.put(getString(R.string.mobile),PN);
 
+                FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(this,instanceIdResult -> {
+                   params.put(getString(R.string.Token),instanceIdResult.getToken());
+                });
+
+            });
         }
     }
 
