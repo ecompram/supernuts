@@ -15,7 +15,9 @@ android {
         buildConfigField "String", "BASEURL", "\"http://emdadkeshavarz.com/\""
         buildConfigField "String", "BASEURLGTC", "\"https://www.gtcir.ir/\""
 
-
+        buildConfigField "String", "Register", "\"api/webapilogin/logonmobile/\""
+        buildConfigField "String", "Verification", "\"api/webapilogin/verifymobile/\""
+        buildConfigField "String", "RefreshToken", "\"api/webapilogin/refreshusertoken/\""
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }

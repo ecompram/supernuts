@@ -1,6 +1,7 @@
 package com.parsjavid.supernuts.di;
 
 import com.parsjavid.supernuts.activities.LoginActivity;
+import com.parsjavid.supernuts.asynkTasks.RefreshTokenAsynkTask;
 
 
 import javax.inject.Singleton;
@@ -16,5 +17,6 @@ import dagger.Component;
 public interface MainComponent {
 
     void Inject(LoginActivity mainActivity);
+    void Inject(RefreshTokenAsynkTask mainActivity);
 
 }

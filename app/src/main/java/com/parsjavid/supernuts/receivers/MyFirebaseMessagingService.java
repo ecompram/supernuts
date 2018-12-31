@@ -66,70 +66,70 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             Map<String, String> data = remoteMessage.getData();
             if (data.size() > 0)
                 try {
-                    if ("NewsNotification".equals(data.get("type")))
-                        sendNewsNotification(data);
-                    else
-                        try {
-                            sendNotification(new JSONObject(new JSONObject(data).getString("data")).getString("id"));
-                        } catch (Exception e) {
-                            sendNotification(data.get("id"));
-                        }
+//                    if ("NewsNotification".equals(data.get("type")))
+//                        sendNewsNotification(data);
+                    //else
+//                        try {
+//                            sendNotification(new JSONObject(new JSONObject(data).getString("data")).getString("id"));
+//                        } catch (Exception e) {
+//                            sendNotification(data.get("id"));
+//                        }
                 } catch (Exception e) {
-                    try {
-                        sendNotification(new JSONObject(new JSONObject(data).getString("data")).getString("id"));
-                    } catch (Exception e2) {
-                        sendNotification(data.get("id"));
-                    }
+//                    try {
+//                        sendNotification(new JSONObject(new JSONObject(data).getString("data")).getString("id"));
+//                    } catch (Exception e2) {
+//                        sendNotification(data.get("id"));
+//                    }
                 }
         }
     }
 
-    private void sendNotification(final String messageId) {
+//    private void sendNotification(final String messageId) {
+//
+//        Intent intent = new Intent(this, ReplyQuestionActivity.class);
+//        intent.putExtra("id", messageId);
+//
+//        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//        final PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
+//                PendingIntent.FLAG_ONE_SHOT);
+//
+//        final Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+//        final NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, "my_channel_id_03")
+//                .setSmallIcon(R.mipmap.ic_launcher)
+//                .setAutoCancel(true)
+//                .setSound(defaultSoundUri)
+//                .setContentIntent(pendingIntent);
+//
+//
+//        final NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+//        Random randomGenerator = new Random();
+//        final int randomInt = randomGenerator.nextInt(100);
+//
+//        notificationBuilder.setContentTitle("پاسخ سوال خود را دریافت کردید").setContentText("برای مشاهده کلیک کنید");
+//        notificationManager.notify(randomInt /* ID of notification */, notificationBuilder.build());
+//    }
 
-        Intent intent = new Intent(this, ReplyQuestionActivity.class);
-        intent.putExtra("id", messageId);
-
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        final PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
-                PendingIntent.FLAG_ONE_SHOT);
-
-        final Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        final NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, "my_channel_id_03")
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setAutoCancel(true)
-                .setSound(defaultSoundUri)
-                .setContentIntent(pendingIntent);
-
-
-        final NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        Random randomGenerator = new Random();
-        final int randomInt = randomGenerator.nextInt(100);
-
-        notificationBuilder.setContentTitle("پاسخ سوال خود را دریافت کردید").setContentText("برای مشاهده کلیک کنید");
-        notificationManager.notify(randomInt /* ID of notification */, notificationBuilder.build());
-    }
-
-    private void sendNewsNotification(final Map<String, String> data) {
-
-        try {
-            Intent intent = new Intent(this, NewsDetailsActivity.class);
-            intent.putExtra("id", data.get("id"));
-
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            final PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
-                    PendingIntent.FLAG_ONE_SHOT);
-
-            final Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-            final NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, "my_channel_id_01")
-                    .setSmallIcon(R.mipmap.ic_launcher)
-                    .setAutoCancel(true)
-                    .setSound(defaultSoundUri)
-                    .setContentIntent(pendingIntent);
-            new SendHttpRequestTask(data, notificationBuilder).execute();
-
-        } catch (Exception e) {
-        }
-    }
+//    private void sendNewsNotification(final Map<String, String> data) {
+//
+//        try {
+//            Intent intent = new Intent(this, NewsDetailsActivity.class);
+//            intent.putExtra("id", data.get("id"));
+//
+//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//            final PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
+//                    PendingIntent.FLAG_ONE_SHOT);
+//
+//            final Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+//            final NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, "my_channel_id_01")
+//                    .setSmallIcon(R.mipmap.ic_launcher)
+//                    .setAutoCancel(true)
+//                    .setSound(defaultSoundUri)
+//                    .setContentIntent(pendingIntent);
+//            new SendHttpRequestTask(data, notificationBuilder).execute();
+//
+//        } catch (Exception e) {
+//        }
+//    }
 
     private void sendNotification2(final String messageTitle, final String messageBody) {
 

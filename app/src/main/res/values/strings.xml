@@ -5,4 +5,9 @@
     <string name="Code">کد دریافتی</string>
     <string name="SmsCode">SmsCode</string>
     <string name="mobile">Mobile</string>
+    <string name="Token">Token</string>
+    <string name="Type">Type</string>
+    <string name="Materialintro">Materialintro</string>
+    <string name="UserId">UserId</string>
+    <string name="ApToken">ApToken</string>
 </resources>
