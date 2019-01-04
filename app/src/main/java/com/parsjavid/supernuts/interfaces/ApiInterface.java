@@ -17,6 +17,7 @@ limitations under the License.
 package com.parsjavid.supernuts.interfaces;
 
 import com.parsjavid.supernuts.BuildConfig;
+import com.parsjavid.supernuts.models.Product;
 
 import java.util.List;
 import java.util.Map;
@@ -50,6 +51,9 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST(BuildConfig.Register)
     Call<ResponseBody> EmdadApplicantRegister(@FieldMap Map<String, String> data);
+
+    @GET(BuildConfig.LoadProducts)
+    Call<List<Product>> LoadProducts();
 
     @FormUrlEncoded
     @POST(BuildConfig.Verification)

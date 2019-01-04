@@ -1,10 +1,12 @@
 <resources>
-    <string name="app_name">SuperNuts</string>
+    <string name="app_name">سوپر ناتس</string>
     <string name="login">ورود</string>
     <string name="Mobile">موبایل</string>
     <string name="Code">کد دریافتی</string>
     <string name="SmsCode">SmsCode</string>
     <string name="mobile">Mobile</string>
+    <string name="preference_PersonType">Preference_PersonType</string>
+    <string name="preference_Products">Preference_Products</string>
     <string name="Token">Token</string>
     <string name="Type">Type</string>
     <string name="Materialintro">Materialintro</string>

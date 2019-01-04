@@ -12,12 +12,13 @@ android {
         versionName "1.0"
         multiDexEnabled true
 
-        buildConfigField "String", "BASEURL", "\"http://127.0.0.1:12510/\""
+        buildConfigField "String", "BASEURL", "\"http://95.162.12.250:90/\""
         buildConfigField "String", "BASEURLGTC", "\"https://www.gtcir.ir/\""
 
-        buildConfigField "String", "Register", "\"api/webapilogin/logonmobile/\""
+        buildConfigField "String", "Register", "\"api/webapilogin/logonmobile\""
         buildConfigField "String", "Verification", "\"api/webapilogin/verifymobile/\""
         buildConfigField "String", "RefreshToken", "\"api/webapilogin/refreshusertoken/\""
+        buildConfigField "String", "LoadProducts", "\"api/webapiproduct/loadlist/\""
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -82,6 +83,7 @@ dependencies {
     //implementation 'com.github.WindSekirun:MediaResizer:1.1.0'
     //implementation 'com.github.kapilmhr:Compressor:1.0.1'
     implementation 'com.android.support:multidex:1.0.3'
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
     implementation project(path: ':filepicker')
     implementation project(path: ':sundatepicker')

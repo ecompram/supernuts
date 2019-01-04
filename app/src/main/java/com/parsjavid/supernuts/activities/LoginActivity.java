@@ -58,6 +58,13 @@ public class LoginActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         Application.getmainComponent().Inject(this);
         setContentView(R.layout.activity_login);
+
+        if (!Application.preferences.getString(getString(R.string.mobile), "0").equals("0")) {
+            startActivity(new Intent(LoginActivity.this, UserPreferenceRegisterActivity.class));
+            finish();
+            return;
+        }
+
         Application.activity = LoginActivity.this;
         DeclareElements();
         et_mobile.addTextChangedListener(new TextWatcher() {
@@ -260,7 +267,7 @@ public class LoginActivity extends BaseActivity {
                     bt_go.setEnabled(false);
                     Map<String, String> params = new HashMap<>();
                     params.put(getString(R.string.mobile), et_mobile.getText().toString().trim());
-                    params.put(getString(R.string.SmsCode), et_mobile.getText().toString().trim());
+                    params.put(getString(R.string.SmsCode), et_code.getText().toString().trim());
                     CheckPhoneNumber(bt_go, params);
                 }
             }
@@ -292,9 +299,11 @@ public class LoginActivity extends BaseActivity {
                                 HSH.getInstance().onOpenPage(LoginActivity.this, MainActivity.class);
                                 finish();
                             } catch (Exception e) {
+                                e.printStackTrace();
                             }
                         }
                     } catch (Exception e) {
+                        e.printStackTrace();
                     }
                 } else {
                     HSH.getInstance().showtoast(LoginActivity.this, "خطا در برقراری ارتباط با سرور");
