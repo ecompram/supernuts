@@ -27,13 +27,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView title, price, shortDescription;
+        public TextView title, price, supplier;
         public ImageView imageView;
 
         public MyViewHolder(View view) {
             super(view);
             title = (TextView) view.findViewById(R.id.title);
             price = (TextView) view.findViewById(R.id.price);
+            supplier=(TextView)view.findViewById(R.id.supplier);
             imageView = (ImageView) view.findViewById(R.id.imageView);
         }
     }
@@ -57,6 +58,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
             Product product = productList.get(position);
             holder.title.setText(product.getTitle());
             holder.price.setText(product.getPrice().toString());
+            holder.supplier.setText(product.getProviderName());
             //holder.year.setText(movie.getYear());
             if (product.getBaseImageFilePath350() != null && product.getBaseImageFilePath350().trim() != "")
                 Picasso.get()

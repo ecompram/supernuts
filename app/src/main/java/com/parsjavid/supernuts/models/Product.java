@@ -3,7 +3,7 @@ package com.parsjavid.supernuts.models;
 import java.math.BigDecimal;
 
 public class Product {
-    private String title, imageUrl, baseImageFilePath350,shortDescription;
+    private String title, imageUrl, baseImageFilePath350,shortDescription, ProviderName;
     private BigDecimal price;
 
     public Product() {
@@ -56,5 +56,13 @@ public class Product {
 
     public void setShortDescription(String shortDescription) {
         this.shortDescription = shortDescription;
+    }
+
+    public String getProviderName() {
+        return ProviderName;
+    }
+
+    public void setProviderName(String providerName) {
+        this.ProviderName = providerName;
     }
 }

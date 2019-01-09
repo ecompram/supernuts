@@ -12,7 +12,7 @@ android {
         versionName "1.0"
         multiDexEnabled true
 
-        buildConfigField "String", "BASEURL", "\"http://95.162.12.250:90/\""
+        buildConfigField "String", "BASEURL", "\"http://supernuts.ir/\""
         buildConfigField "String", "BASEURLGTC", "\"https://www.gtcir.ir/\""
 
         buildConfigField "String", "Register", "\"api/webapilogin/logonmobile\""

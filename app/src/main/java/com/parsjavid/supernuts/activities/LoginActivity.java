@@ -296,7 +296,7 @@ public class LoginActivity extends BaseActivity {
                                 HSH.getInstance().editor(getString(R.string.mobile), params.get(getString(R.string.mobile)));
                                 HSH.getInstance().editor(getString(R.string.ApToken), result.getString(getString(R.string.ApToken)));
 
-                                HSH.getInstance().onOpenPage(LoginActivity.this, MainActivity.class);
+                                HSH.getInstance().onOpenPage(LoginActivity.this, UserPreferenceRegisterActivity.class);
                                 finish();
                             } catch (Exception e) {
                                 e.printStackTrace();
