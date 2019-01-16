@@ -1,5 +1,6 @@
 package com.parsjavid.supernuts;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -8,7 +9,9 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
+import com.parsjavid.supernuts.activities.ProductDetailInfoActivity;
 import com.parsjavid.supernuts.adapters.ProductAdapter;
 import com.parsjavid.supernuts.interfaces.ApiInterface;
 import com.parsjavid.supernuts.models.Product;
@@ -47,7 +50,17 @@ public class MainActivity extends AppCompatActivity {
         productRecyclerView = (RecyclerView)findViewById(R.id.recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         productRecyclerView.setLayoutManager(layoutManager);
-        productAdapter = new ProductAdapter(productList);
+        productAdapter = new ProductAdapter(productList, new ProductAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Product item) {
+
+                Intent intent=new Intent(MainActivity.this, ProductDetailInfoActivity.class);
+                intent.putExtra("productId",item.getId());
+                startActivity(intent);
+                //Toast.makeText(getApplicationContext(),"Clicked",Toast.LENGTH_LONG).show();
+
+            }
+        });
         productRecyclerView.setAdapter(productAdapter);
         productRecyclerView.setItemAnimator(new DefaultItemAnimator());
 

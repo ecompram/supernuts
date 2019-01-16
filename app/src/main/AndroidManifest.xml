@@ -26,6 +26,8 @@
             android:screenOrientation="portrait" />
         <activity android:name=".activities.UserPreferenceRegisterActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".activities.ProductDetailInfoActivity"
+            android:screenOrientation="portrait" />
         <service
             android:name=".receivers.MyFirebaseMessagingService"
             android:enabled="true"

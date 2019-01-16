@@ -55,6 +55,9 @@ public interface ApiInterface {
     @GET(BuildConfig.LoadProducts)
     Call<List<Product>> LoadProducts();
 
+    @GET(BuildConfig.LoadProductById)
+    Call<Product> LoadProductById(@Path("productId")Long productId);
+
     @FormUrlEncoded
     @POST(BuildConfig.Verification)
     Call<ResponseBody> Verification(@FieldMap Map<String, String> data);

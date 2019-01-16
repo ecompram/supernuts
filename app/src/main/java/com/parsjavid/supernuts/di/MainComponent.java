@@ -2,6 +2,7 @@ package com.parsjavid.supernuts.di;
 
 import com.parsjavid.supernuts.MainActivity;
 import com.parsjavid.supernuts.activities.LoginActivity;
+import com.parsjavid.supernuts.activities.ProductDetailInfoActivity;
 import com.parsjavid.supernuts.asynkTasks.RefreshTokenAsynkTask;
 
 
@@ -20,5 +21,6 @@ public interface MainComponent {
     void Inject(LoginActivity loginActivity);
     void Inject(RefreshTokenAsynkTask refreshTokenAsynkTask);
     void Inject(MainActivity mainActivity);
+    void Inject(ProductDetailInfoActivity productDetailInfoActivity);
 
 }

@@ -1,21 +1,35 @@
 package com.parsjavid.supernuts.models;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class Product {
-    private String title, imageUrl, baseImageFilePath350,shortDescription, ProviderName;
-    private BigDecimal price;
+    private String title, imageUrl, baseImageFilePath350,shortDescription,
+            providerName,baseImageFilePath200,baseImageFilePath600,review,description;
+    private BigDecimal price,beforeDiscountPrice;
+    private Long id;
+    private List<ProductAttribute> productAttributes;
+
 
     public Product() {
     }
 
-    public Product(String title, String imageUrl, BigDecimal price, String shortDescription,String baseImageFilePath350) {
+    public Product(Long id, String title, String imageUrl, BigDecimal price, String shortDescription,
+                   String baseImageFilePath200) {
+        this.id=id;
         this.title = title;
         this.imageUrl = imageUrl;
         this.price = price;
-        this.baseImageFilePath350=baseImageFilePath350;
+        this.baseImageFilePath200=baseImageFilePath200;
         this.shortDescription = shortDescription;
+    }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -36,6 +50,22 @@ public class Product {
 
     public void setBaseImageFilePath350(String baseImageFilePath350) {
         this.baseImageFilePath350 = baseImageFilePath350;
+    }
+
+    public String getBaseImageFilePath600() {
+        return baseImageFilePath600;
+    }
+
+    public void setBaseImageFilePath600(String baseImageFilePath600) {
+        this.baseImageFilePath600 = baseImageFilePath600;
+    }
+
+    public String getBaseImageFilePath200() {
+        return baseImageFilePath200;
+    }
+
+    public void setBaseImageFilePath200(String baseImageFilePath200) {
+        this.baseImageFilePath200 = baseImageFilePath200;
     }
 
     public void setImageUrl(String imageUrl) {
@@ -59,10 +89,42 @@ public class Product {
     }
 
     public String getProviderName() {
-        return ProviderName;
+        return providerName;
     }
 
     public void setProviderName(String providerName) {
-        this.ProviderName = providerName;
+        this.providerName = providerName;
+    }
+
+    public String getReview() {
+        return review;
+    }
+
+    public void setReview(String review) {
+        this.review = review;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public BigDecimal getBeforeDiscountPrice() {
+        return beforeDiscountPrice;
+    }
+
+    public void setBeforeDiscountPrice(BigDecimal beforeDiscountPrice) {
+        this.beforeDiscountPrice = beforeDiscountPrice;
+    }
+
+    public List<ProductAttribute> getProductAttributes() {
+        return productAttributes;
+    }
+
+    public void setProductAttributes(List<ProductAttribute> productAttributes) {
+        this.productAttributes = productAttributes;
     }
 }

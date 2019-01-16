@@ -19,6 +19,7 @@ android {
         buildConfigField "String", "Verification", "\"api/webapilogin/verifymobile/\""
         buildConfigField "String", "RefreshToken", "\"api/webapilogin/refreshusertoken/\""
         buildConfigField "String", "LoadProducts", "\"api/webapiproduct/loadlist/\""
+        buildConfigField "String", "LoadProductById", "\"api/webapiproduct/product/{productId}\""
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }

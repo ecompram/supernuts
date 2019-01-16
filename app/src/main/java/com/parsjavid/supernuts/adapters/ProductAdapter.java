@@ -16,7 +16,13 @@ import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHolder> {
 
+    public interface OnItemClickListener{
+        void onItemClick(Product item);
+    }
+
     private List<Product> productList;
+    private final OnItemClickListener listener;
+
 
     public List<Product> getProductList() {
         return productList;
@@ -37,11 +43,20 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
             supplier=(TextView)view.findViewById(R.id.supplier);
             imageView = (ImageView) view.findViewById(R.id.imageView);
         }
+        public void bind(final Product item,final OnItemClickListener listener){
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onItemClick(item);
+                }
+            });
+        }
     }
 
 
-    public ProductAdapter(List<Product> productList) {
+    public ProductAdapter(List<Product> productList,OnItemClickListener listener) {
         this.productList = productList;
+        this.listener=listener;
     }
 
     @Override
@@ -54,21 +69,23 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
+
         if (productList != null) {
             Product product = productList.get(position);
             holder.title.setText(product.getTitle());
             holder.price.setText(product.getPrice().toString());
             holder.supplier.setText(product.getProviderName());
             //holder.year.setText(movie.getYear());
-            if (product.getBaseImageFilePath350() != null && product.getBaseImageFilePath350().trim() != "")
+            if (product.getBaseImageFilePath200() != null && product.getBaseImageFilePath200().trim() != "")
                 Picasso.get()
-                        .load(product.getBaseImageFilePath350())
-                        .resize(50, 50)
+                        .load(product.getBaseImageFilePath200())
+                        .resize(200, 200)
                         .centerCrop()
                         .into(holder.imageView);
             else {
                holder.imageView.setImageResource(R.drawable.empty_image);
             }
+            holder.bind(productList.get(position),listener);
         }
     }
     @Override
