@@ -106,8 +106,20 @@ public class ProductDetailInfoActivity extends AppCompatActivity {
 
     public void clickOrderProduct(View view) {
 
+        String orderCount=orderValue.getText().toString();
+
+
         Map<String, String> data = new HashMap<>();
-        data.put("id", "");
+        data.put("orderValue", orderCount);
+        data.put("productId", productId.toString());
+
+        String mobile=Application.preferences.getString(getString(R.string.mobile), "0");
+        String token=Application.preferences.getString(getString(R.string.Token), "0");
+
+        data.put("mobile", mobile);
+        data.put("token", token);
+
+
         Call<ResponseBody> call = retrofit.create(ApiInterface.class).SaveProductOrder(data);
         progressBar.setVisibility(View.VISIBLE);
         call.enqueue(new Callback<ResponseBody>() {
