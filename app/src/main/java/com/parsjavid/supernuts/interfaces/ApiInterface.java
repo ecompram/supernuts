@@ -61,10 +61,10 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST(BuildConfig.Verification)
     Call<ResponseBody> Verification(@FieldMap Map<String, String> data);
-//
-//    @FormUrlEncoded
-//    @POST(BuildConfig.UpdateProfile)
-//    Call<ResponseBody> UpdateProfile(@FieldMap Map<String, String> data);
+
+    @FormUrlEncoded
+    @POST(BuildConfig.SaveProductOrder)
+    Call<ResponseBody> SaveProductOrder(@FieldMap Map<String, String> data);
 //
 //    @FormUrlEncoded
 //    @POST("api/apiNews/")

@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
+
+    <ProgressBar
+        android:id="@+id/progressBarInProductDetail"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
 
     <android.support.v7.widget.CardView
         android:id="@+id/productCardView"
@@ -21,21 +34,15 @@
             android:layoutDirection="rtl"
             android:orientation="vertical">
 
-            <ProgressBar
-                android:id="@+id/progressBarInProductDetail"
-                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true" />
-
             <ImageView
                 android:id="@+id/productImage"
-                android:layout_width="wrap_content"
-                android:layout_height="300dp"
+                android:layout_width="600dp"
+                android:layout_height="350dp"
+                android:adjustViewBounds="true"
                 android:background="@color/gray"
                 android:contentDescription="dfd"
                 android:scaleType="centerCrop"
-                android:visibility="visible"
+                android:visibility="gone"
                 card_view:srcCompat="@drawable/empty_image_600x600" />
 
 
@@ -59,6 +66,7 @@
         android:layout_height="wrap_content"
         android:textStyle="bold"
         android:layout_marginTop="10dp"
+        android:textSize="24sp"
         />
 
     <TextView
@@ -66,7 +74,72 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:textSize="24sp"
         android:textColor="@color/dark_green"
         />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/providerName"
+                />:
+            <TextView
+                android:id="@+id/providerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/totalStockValue"
+                />:
+            <TextView
+                android:id="@+id/totalValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/valueInKilogram" />
+
+        <EditText
+            android:id="@+id/orderValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:ems="10"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/orderProduct"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/dark_green"
+            android:onClick="clickOrderProduct"
+            android:padding="5dp"
+            android:text="@string/orderProduct"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
     </LinearLayout>
 </LinearLayout>
+</ScrollView>

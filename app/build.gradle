@@ -20,6 +20,7 @@ android {
         buildConfigField "String", "RefreshToken", "\"api/webapilogin/refreshusertoken/\""
         buildConfigField "String", "LoadProducts", "\"api/webapiproduct/loadlist/\""
         buildConfigField "String", "LoadProductById", "\"api/webapiproduct/product/{productId}\""
+        buildConfigField "String", "SaveProductOrder", "\"api/webapiproductorder/save\""
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }

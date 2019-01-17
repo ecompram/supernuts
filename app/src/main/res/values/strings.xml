@@ -12,4 +12,9 @@
     <string name="Materialintro">Materialintro</string>
     <string name="UserId">UserId</string>
     <string name="ApToken">ApToken</string>
+    <string name="toman">تومان</string>
+    <string name="orderProduct">سفارش</string>
+    <string name="valueInKilogram">مقدار به کیلو گرم</string>
+    <string name="providerName">تامین کننده</string>
+    <string name="totalStockValue">مقدار موجودی:</string>
 </resources>

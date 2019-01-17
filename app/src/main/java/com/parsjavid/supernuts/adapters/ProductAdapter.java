@@ -1,6 +1,7 @@
 package com.parsjavid.supernuts.adapters;
 
 
+import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +13,9 @@ import com.parsjavid.supernuts.R;
 import com.parsjavid.supernuts.models.Product;
 import com.squareup.picasso.Picasso;
 
+import java.math.RoundingMode;
 import java.util.List;
+import java.util.Locale;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHolder> {
 
@@ -57,6 +60,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
     public ProductAdapter(List<Product> productList,OnItemClickListener listener) {
         this.productList = productList;
         this.listener=listener;
+
     }
 
     @Override
@@ -73,7 +77,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
         if (productList != null) {
             Product product = productList.get(position);
             holder.title.setText(product.getTitle());
-            holder.price.setText(product.getPrice().toString());
+
+            if(product.getPrice()!=null)
+            holder.price.setText(String.format(Locale.forLanguageTag("fa-IR"), "%,.0f", product.getPrice().
+                    setScale(2, RoundingMode.DOWN)));
             holder.supplier.setText(product.getProviderName());
             //holder.year.setText(movie.getYear());
             if (product.getBaseImageFilePath200() != null && product.getBaseImageFilePath200().trim() != "")
