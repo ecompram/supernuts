@@ -87,13 +87,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/providerName"
+                android:text="@string/providerFullName"
                 />:
             <TextView
-                android:id="@+id/providerName"
+                android:id="@+id/providerFullName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
+                android:layout_marginStart="5dp"
+                android:textColor="@color/dark_green"
                 />
         </LinearLayout>
         <LinearLayout
@@ -106,12 +107,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/totalStockValue"
-                />:
+                />
             <TextView
-                android:id="@+id/totalValue"
+                android:id="@+id/stockValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
+                android:layout_marginStart="5dp"
+                android:textColor="@color/dark_green"
+                android:layout_marginEnd="10dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="@string/minimumOrderValue"
+                />
+            <TextView
+                android:id="@+id/minimumOrderValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:textColor="@color/dark_green"
                 />
         </LinearLayout>
         <TextView
@@ -125,10 +141,21 @@
             android:id="@+id/orderValue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:ems="10"
             android:inputType="number" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/proposedPrice" />
+
+        <EditText
+            android:id="@+id/proposedPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number" />
         <Button
             android:id="@+id/orderProduct"
             android:layout_width="80dp"

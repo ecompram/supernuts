@@ -5,9 +5,9 @@ import java.util.List;
 
 public class Product {
     private String title, imageUrl, baseImageFilePath350,shortDescription,
-            providerName,baseImageFilePath200,baseImageFilePath600,review,description;
+            providerFullName,baseImageFilePath200,baseImageFilePath600,review,description;
     private BigDecimal price,beforeDiscountPrice;
-    private Long id;
+    private Long id,minimumOrderValue,stockValue;
     private List<ProductAttribute> productAttributes;
 
 
@@ -15,13 +15,14 @@ public class Product {
     }
 
     public Product(Long id, String title, String imageUrl, BigDecimal price, String shortDescription,
-                   String baseImageFilePath200) {
+                   String baseImageFilePath200,String providerFullName) {
         this.id=id;
         this.title = title;
         this.imageUrl = imageUrl;
         this.price = price;
         this.baseImageFilePath200=baseImageFilePath200;
         this.shortDescription = shortDescription;
+        this.providerFullName=providerFullName;
     }
 
     public Long getId() {
@@ -88,12 +89,12 @@ public class Product {
         this.shortDescription = shortDescription;
     }
 
-    public String getProviderName() {
-        return providerName;
+    public String getProviderFullName() {
+        return providerFullName;
     }
 
-    public void setProviderName(String providerName) {
-        this.providerName = providerName;
+    public void setProviderFullName(String providerFullName) {
+        this.providerFullName = providerFullName;
     }
 
     public String getReview() {
@@ -126,5 +127,21 @@ public class Product {
 
     public void setProductAttributes(List<ProductAttribute> productAttributes) {
         this.productAttributes = productAttributes;
+    }
+
+    public Long getMinimumOrderValue() {
+        return minimumOrderValue;
+    }
+
+    public void setMinimumOrderValue(Long minimumOrderValue) {
+        this.minimumOrderValue = minimumOrderValue;
+    }
+
+    public Long getStockValue() {
+        return stockValue;
+    }
+
+    public void setStockValue(Long stockValue) {
+        this.stockValue = stockValue;
     }
 }

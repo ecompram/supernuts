@@ -1,7 +1,6 @@
 package com.parsjavid.supernuts.adapters;
 
 
-import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -81,7 +80,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
             if(product.getPrice()!=null)
             holder.price.setText(String.format(Locale.forLanguageTag("fa-IR"), "%,.0f", product.getPrice().
                     setScale(2, RoundingMode.DOWN)));
-            holder.supplier.setText(product.getProviderName());
+            holder.supplier.setText(product.getProviderFullName());
             //holder.year.setText(movie.getYear());
             if (product.getBaseImageFilePath200() != null && product.getBaseImageFilePath200().trim() != "")
                 Picasso.get()

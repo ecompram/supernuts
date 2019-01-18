@@ -12,8 +12,11 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.google.android.gms.common.util.NumberUtils;
 import com.parsjavid.supernuts.Application;
+import com.parsjavid.supernuts.MainActivity;
 import com.parsjavid.supernuts.R;
+import com.parsjavid.supernuts.di.HSH;
 import com.parsjavid.supernuts.interfaces.ApiInterface;
 import com.parsjavid.supernuts.models.Product;
 import com.squareup.picasso.Picasso;
@@ -28,6 +31,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -41,12 +45,15 @@ public class ProductDetailInfoActivity extends AppCompatActivity {
     private Long productId;
     private TextView productTitle;
     private TextView productPrice;
+    private TextView providerFullNameTV;
+    private TextView minimumOrderValueTV;
+    private TextView stockValueTV;
     private TextView productReview;
     private TextView productProvderName;
     private CardView productCardView;
     private ImageView productImage;
-    private EditText orderValue;
-
+    private EditText orderValueET;
+    private EditText ProposedPriceET;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -59,7 +66,11 @@ public class ProductDetailInfoActivity extends AppCompatActivity {
         productTitle = (TextView) findViewById(R.id.productTitle);
         productPrice = (TextView) findViewById(R.id.productPrice);
         productImage = (ImageView) findViewById(R.id.productImage);
-        orderValue = (EditText) findViewById(R.id.orderValue);
+        orderValueET = (EditText) findViewById(R.id.orderValue);
+        ProposedPriceET = (EditText) findViewById(R.id.proposedPrice);
+        providerFullNameTV=(TextView)findViewById(R.id.providerFullName);
+        minimumOrderValueTV=(TextView)findViewById(R.id.minimumOrderValue);
+        stockValueTV=(TextView)findViewById(R.id.stockValue);
 
         Intent intent = getIntent();
         productId = intent.getLongExtra("productId", 0);
@@ -76,6 +87,9 @@ public class ProductDetailInfoActivity extends AppCompatActivity {
                     Product product = response.body();
                     if (product != null) {
                         productTitle.setText(product.getTitle());
+                        providerFullNameTV.setText(product.getProviderFullName());
+                        minimumOrderValueTV.setText(product.getMinimumOrderValue()==null ?"1":product.getMinimumOrderValue().toString());
+                        stockValueTV.setText(product.getStockValue()==null?getString(R.string.unlimited):product.getStockValue().toString());
                         if (product.getPrice() != null)
                             productPrice.
                                     setText(String.format(Locale.forLanguageTag("fa-IR"), "%,.0f", product.getPrice().
@@ -104,43 +118,87 @@ public class ProductDetailInfoActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * ثبت سفارش
+     * @param view
+     */
     public void clickOrderProduct(View view) {
 
-        String orderCount=orderValue.getText().toString();
-
+        String orderCount= orderValueET.getText().toString();
+        String ProposedPrice= ProposedPriceET.getText().toString();
 
         Map<String, String> data = new HashMap<>();
         data.put("orderValue", orderCount);
         data.put("productId", productId.toString());
+        data.put("proposedPrice",ProposedPrice);
 
-        String mobile=Application.preferences.getString(getString(R.string.mobile), "0");
-        String token=Application.preferences.getString(getString(R.string.Token), "0");
+        String mobile=Application.preferences.getString(getString(R.string.mobile),"");
+        String token=Application.preferences.getString(getString(R.string.Token), "");
 
-        data.put("mobile", mobile);
-        data.put("token", token);
+        String errorMessage="";
+        if(mobile==null || mobile.trim().equals("") || token==null || token.trim().equals(""))
+        {
+            errorMessage=getString(R.string.common_systemUser_invalid);
+        }
+        if(!NumberUtils.isNumeric(orderCount) || Integer.parseInt(orderCount)<=0)
+            errorMessage=getString(R.string.productOrder_saveOrder_orderCountInvalid);
 
+        if(productId ==null || productId<=0)
+            errorMessage=getString(R.string.productOrder_saveOrder_productInvalid);
 
-        Call<ResponseBody> call = retrofit.create(ApiInterface.class).SaveProductOrder(data);
-        progressBar.setVisibility(View.VISIBLE);
-        call.enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                if(response.isSuccessful()){
-                    JSONObject result=null;
-                    try {
-                        result=new JSONObject(response.body().toString().trim());
-                        Integer type=Integer.parseInt(result.getString("Type"));
+        if(errorMessage=="") {
 
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+            data.put("mobile", mobile);
+            data.put("token", token);
+
+            Call<ResponseBody> call = retrofit.create(ApiInterface.class).SaveProductOrder(data);
+            progressBar.setVisibility(View.VISIBLE);
+
+            call.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    if (response.isSuccessful() || response.body() == null) {
+                        JSONObject result = null;
+                        try {
+                            result = new JSONObject(response.body().toString().trim());
+                            Integer type = Integer.parseInt(result.getString("Type"));
+                            String message = result.getString("Message");
+                            if (type > 0) {
+                                //HSH.getInstance().editor(getString(R.string.systemUser_latest_order), type.toString());
+                                final SweetAlertDialog dialog = new SweetAlertDialog(ProductDetailInfoActivity.this, SweetAlertDialog.SUCCESS_TYPE);
+                                dialog.setTitleText("");
+                                dialog.setContentText(getString(R.string.productOrder_saveOrder_successMessage, type));
+                                dialog.setConfirmText(getString(R.string.common_confirm));
+
+                                dialog.setConfirmClickListener((SweetAlertDialog sDialog) -> {
+                                    dialog.dismiss();
+                                    Intent intent = new Intent(ProductDetailInfoActivity.this, MainActivity.class);
+                                    startActivity(intent);
+                                });
+
+                                HSH.getInstance().dialog(dialog);
+
+                            } else {
+                                HSH.getInstance().showtoast(ProductDetailInfoActivity.this, message == null ? getString(R.string.productOrder_saveOrderProblem_message) : message);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        HSH.getInstance().showtoast(ProductDetailInfoActivity.this, getString(R.string.productOrder_saveOrderProblem_message));
+                        //HSH.getInstance().editor(getString(R.string.systemUser_latest_order), getString(R.string.productOrder_saveOrderProblem_message));
                     }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-
-            }
-        });
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    //HSH.getInstance().editor(getString(R.string.systemUser_latest_order), getString(R.string.productOrder_saveOrderProblem_message));
+                    HSH.getInstance().showtoast(ProductDetailInfoActivity.this, getString(R.string.productOrder_saveOrderProblem_message));
+                }
+            });
+        }else{
+           // HSH.getInstance().editor(getString(R.string.systemUser_latest_order), errorMessage);
+            HSH.getInstance().showtoast(ProductDetailInfoActivity.this, errorMessage);
+        }
     }
 }
