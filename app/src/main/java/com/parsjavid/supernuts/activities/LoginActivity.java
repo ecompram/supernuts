@@ -182,7 +182,7 @@ public class LoginActivity extends BaseActivity {
                             HSH.getInstance().display(LoginActivity.this, input_layout_code);
                             et_code.setEnabled(true);
                             v.setEnabled(true);
-                            ((Button) v).setText("تایید");
+                            ((Button) v).setText(getString(R.string.common_confirm));
                             v.setOnClickListener(v -> {
                                 String s = et_code.getText().toString().trim();
                                 if (s.equals(""))
@@ -200,8 +200,6 @@ public class LoginActivity extends BaseActivity {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-
-
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -279,7 +277,7 @@ public class LoginActivity extends BaseActivity {
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
-                if (response.isSuccessful()) {
+                if (response.isSuccessful() && response.body()!=null) {
                     try {
                         JSONObject result = null;
                         result = new JSONObject(response.body().string().trim());

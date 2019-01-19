@@ -133,7 +133,7 @@ public class ProductDetailInfoActivity extends AppCompatActivity {
         data.put("proposedPrice",ProposedPrice);
 
         String mobile=Application.preferences.getString(getString(R.string.mobile),"");
-        String token=Application.preferences.getString(getString(R.string.Token), "");
+        String token=Application.preferences.getString(getString(R.string.ApToken), "");
 
         String errorMessage="";
         if(mobile==null || mobile.trim().equals("") || token==null || token.trim().equals(""))
@@ -148,7 +148,7 @@ public class ProductDetailInfoActivity extends AppCompatActivity {
 
         if(errorMessage=="") {
 
-            data.put("mobile", mobile);
+            data.put("mobileNumber", mobile);
             data.put("token", token);
 
             Call<ResponseBody> call = retrofit.create(ApiInterface.class).SaveProductOrder(data);
@@ -157,10 +157,10 @@ public class ProductDetailInfoActivity extends AppCompatActivity {
             call.enqueue(new Callback<ResponseBody>() {
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                    if (response.isSuccessful() || response.body() == null) {
+                    if (response.isSuccessful() && response.body() != null) {
                         JSONObject result = null;
                         try {
-                            result = new JSONObject(response.body().toString().trim());
+                            result = new JSONObject(response.body().toString());
                             Integer type = Integer.parseInt(result.getString("Type"));
                             String message = result.getString("Message");
                             if (type > 0) {
@@ -183,6 +183,7 @@ public class ProductDetailInfoActivity extends AppCompatActivity {
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
+                            HSH.getInstance().showtoast(ProductDetailInfoActivity.this,  getString(R.string.productOrder_saveOrderProblem_message));
                         }
                     } else {
                         HSH.getInstance().showtoast(ProductDetailInfoActivity.this, getString(R.string.productOrder_saveOrderProblem_message));
