@@ -17,6 +17,7 @@ limitations under the License.
 package com.parsjavid.supernuts.interfaces;
 
 import com.parsjavid.supernuts.BuildConfig;
+import com.parsjavid.supernuts.models.ApiSuccess;
 import com.parsjavid.supernuts.models.Product;
 
 import java.util.List;
@@ -64,7 +65,7 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @POST(BuildConfig.SaveProductOrder)
-    Call<ResponseBody> SaveProductOrder(@FieldMap Map<String, String> data);
+    Call<ApiSuccess> SaveProductOrder(@FieldMap Map<String, String> data);
 //
 //    @FormUrlEncoded
 //    @POST("api/apiNews/")

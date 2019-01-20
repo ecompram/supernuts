@@ -18,6 +18,7 @@ import com.parsjavid.supernuts.MainActivity;
 import com.parsjavid.supernuts.R;
 import com.parsjavid.supernuts.di.HSH;
 import com.parsjavid.supernuts.interfaces.ApiInterface;
+import com.parsjavid.supernuts.models.ApiSuccess;
 import com.parsjavid.supernuts.models.Product;
 import com.squareup.picasso.Picasso;
 
@@ -151,18 +152,18 @@ public class ProductDetailInfoActivity extends AppCompatActivity {
             data.put("mobileNumber", mobile);
             data.put("token", token);
 
-            Call<ResponseBody> call = retrofit.create(ApiInterface.class).SaveProductOrder(data);
+            Call<ApiSuccess> call = retrofit.create(ApiInterface.class).SaveProductOrder(data);
             progressBar.setVisibility(View.VISIBLE);
 
-            call.enqueue(new Callback<ResponseBody>() {
+            call.enqueue(new Callback<ApiSuccess>() {
                 @Override
-                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                public void onResponse(Call<ApiSuccess> call, Response<ApiSuccess> response) {
                     if (response.isSuccessful() && response.body() != null) {
-                        JSONObject result = null;
-                        try {
-                            result = new JSONObject(response.body().toString());
-                            Integer type = Integer.parseInt(result.getString("Type"));
-                            String message = result.getString("Message");
+                        ApiSuccess result = null;
+
+                            result = response.body();
+                            Integer type = result.getResultKey();
+                            String message = result.getMessage();
                             if (type > 0) {
                                 //HSH.getInstance().editor(getString(R.string.systemUser_latest_order), type.toString());
                                 final SweetAlertDialog dialog = new SweetAlertDialog(ProductDetailInfoActivity.this, SweetAlertDialog.SUCCESS_TYPE);
@@ -181,10 +182,7 @@ public class ProductDetailInfoActivity extends AppCompatActivity {
                             } else {
                                 HSH.getInstance().showtoast(ProductDetailInfoActivity.this, message == null ? getString(R.string.productOrder_saveOrderProblem_message) : message);
                             }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            HSH.getInstance().showtoast(ProductDetailInfoActivity.this,  getString(R.string.productOrder_saveOrderProblem_message));
-                        }
+
                     } else {
                         HSH.getInstance().showtoast(ProductDetailInfoActivity.this, getString(R.string.productOrder_saveOrderProblem_message));
                         //HSH.getInstance().editor(getString(R.string.systemUser_latest_order), getString(R.string.productOrder_saveOrderProblem_message));
@@ -192,7 +190,7 @@ public class ProductDetailInfoActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                public void onFailure(Call<ApiSuccess> call, Throwable t) {
                     //HSH.getInstance().editor(getString(R.string.systemUser_latest_order), getString(R.string.productOrder_saveOrderProblem_message));
                     HSH.getInstance().showtoast(ProductDetailInfoActivity.this, getString(R.string.productOrder_saveOrderProblem_message));
                 }
