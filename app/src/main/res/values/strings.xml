@@ -27,4 +27,9 @@
     <string name="productOrder_saveOrder_productInvalid">اطلاعات محصول معتبر نمی باشد. لطفا دوباره تلاش نمایید.</string>
     <string name="productOrder_saveOrder_orderCountInvalid">لطفا مقدار سفارش را وارد نمایید.</string>
     <string name="unlimited">نامحدود</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
 </resources>
