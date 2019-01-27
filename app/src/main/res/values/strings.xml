@@ -21,6 +21,7 @@
     <string name="productOrder_saveOrderProblem_message">ثبت سفارش با مشکل روبرو شد، لطفا دوباره تلاش نمایید.</string>
     <string name="productOrder_saveOrder_successMessage">سفارش شما با شماره فاکتور %1$d در سیستم ثبت شد. کارشناسان فروش ما بزودی با شما تماس خواهند گرفت.</string>
     <string name="common_confirm">تایید</string>
+    <string name="common_search">جستجو</string>
     <string name="common_systemUser_invalid">اطلاعات کاربری شما معتبر نمی باشد.</string>
     <string name="minimumOrderValue">حداقل حجم خرید</string>
     <string name="proposedPrice">قیمت پیشنهادی شما</string>

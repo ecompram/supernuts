@@ -1,5 +1,6 @@
 package com.parsjavid.supernuts;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -8,6 +9,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -15,10 +17,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.parsjavid.supernuts.activities.ProductDetailInfoActivity;
@@ -46,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     RecyclerView productRecyclerView;
     ProductAdapter productAdapter;
     private ProgressBar progressBar;
+    AlertDialog.Builder alertBuilder;
     private Map<String, String> params = new HashMap<>();
 
     @Override
@@ -61,8 +67,35 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                LayoutInflater aInflator=getLayoutInflater();
+                View alertLayout=aInflator.inflate(R.layout.product_list_filter,null);
+
+                Spinner productCombo = (Spinner) alertLayout.findViewById(R.id.productComboId);
+                Spinner providerCombo = (Spinner) alertLayout.findViewById(R.id.providerComboId);
+
+                String[] products=new String[]{"محصول را انتخاب کنید","پسته","مغز پسته"};
+                ArrayAdapter<String> productComboAdapter=new ArrayAdapter<String>(MainActivity.this,android.R.layout.simple_spinner_dropdown_item,products);
+
+                String[] providers=new String[]{"تامین کننده را انتخاب کنید","سوپرناتس"};
+                ArrayAdapter<String> providerComboAdapter=new ArrayAdapter<String>(MainActivity.this,android.R.layout.simple_spinner_dropdown_item,providers);
+
+                productCombo.setAdapter(productComboAdapter);
+                providerCombo.setAdapter(providerComboAdapter);
+
+                new AlertDialog.Builder(MainActivity.this, R.style.DialogTheme)
+                        .setTitle(getString(R.string.common_search))
+                        .setCancelable(true)
+                        .setView(alertLayout)
+                        .setPositiveButton(getString(R.string.common_search), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                                Toast.makeText(MainActivity.this, "Yes Button Clicked!", Toast.LENGTH_SHORT).show();
+
+                            }
+                        })
+                        .create()
+                        .show();
             }
         });
 
