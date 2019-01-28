@@ -89,7 +89,7 @@ public class Application extends android.app.Application {
 
         mainComponent3 = DaggerMainComponent.builder()
                 .imageLoaderMoudle(new ImageLoaderMoudle(this))
-                .netModule(new NetModule("http://sabzehmeydoon.com/"))
+                .netModule(new NetModule("http://supernuts.ir/"))
                 .appModule(new AppModule(this))
                 .build();
         /*"https://ws.api.video/"*/
