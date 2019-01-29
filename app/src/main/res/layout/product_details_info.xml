@@ -4,169 +4,169 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
 
-    <ProgressBar
-        android:id="@+id/progressBarInProductDetail"
-        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:visibility="gone" />
+        android:orientation="vertical">
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/productCardView"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="5dp"
-        card_view:cardCornerRadius="2dp"
-        card_view:cardPreventCornerOverlap="false"
-        card_view:contentPadding="10dp">
+        <ProgressBar
+            android:id="@+id/progressBarInProductDetail"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
 
-        <LinearLayout
+        <android.support.v7.widget.CardView
+            android:id="@+id/productCardView"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            card_view:cardCornerRadius="2dp"
+            card_view:cardPreventCornerOverlap="false"
+            card_view:contentPadding="10dp">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layoutDirection="rtl"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/productImage"
+                    android:layout_width="600dp"
+                    android:layout_height="350dp"
+                    android:adjustViewBounds="true"
+                    android:background="@color/gray"
+                    android:contentDescription="dfd"
+                    android:scaleType="centerCrop"
+                    android:visibility="gone"
+                    card_view:srcCompat="@drawable/empty_image_600x600" />
+
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
             android:layoutDirection="rtl"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="5dp">
 
-            <ImageView
-                android:id="@+id/productImage"
-                android:layout_width="600dp"
-                android:layout_height="350dp"
-                android:adjustViewBounds="true"
-                android:background="@color/gray"
-                android:contentDescription="dfd"
-                android:scaleType="centerCrop"
-                android:visibility="gone"
-                card_view:srcCompat="@drawable/empty_image_600x600" />
-
-
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:layoutDirection="rtl"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginLeft="5dp"
-        android:padding="5dp"
-        android:orientation="vertical"
-        >
-    <TextView
-        android:id="@+id/productTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:layout_marginTop="10dp"
-        android:textSize="24sp"
-        />
-
-    <TextView
-        android:id="@+id/productPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textSize="24sp"
-        android:textColor="@color/dark_green"
-        />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            >
             <TextView
+                android:id="@+id/productTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/providerFullName"
-                />:
+                android:layout_marginTop="10dp"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
             <TextView
-                android:id="@+id/providerFullName"
+                android:id="@+id/productPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
                 android:textColor="@color/dark_green"
-                />
+                android:textSize="24sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/providerFullName" />:
+
+                <TextView
+                    android:id="@+id/providerFullName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/dark_green" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/totalStockValue" />
+
+                <TextView
+                    android:id="@+id/stockValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/dark_green" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="@string/minimumOrderValue" />
+
+                <TextView
+                    android:id="@+id/minimumOrderValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/dark_green" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/valueInKilogram" />
+
+            <EditText
+                android:id="@+id/orderValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/proposedPrice" />
+
+            <EditText
+                android:id="@+id/proposedPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number" />
+
+            <Button
+                android:id="@+id/orderProduct"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/dark_green"
+                android:onClick="clickOrderProduct"
+                android:padding="5dp"
+                android:text="@string/orderProduct"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/totalStockValue"
-                />
-            <TextView
-                android:id="@+id/stockValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:textColor="@color/dark_green"
-                android:layout_marginEnd="10dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:text="@string/minimumOrderValue"
-                />
-            <TextView
-                android:id="@+id/minimumOrderValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:textColor="@color/dark_green"
-                />
-        </LinearLayout>
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/valueInKilogram" />
-
-        <EditText
-            android:id="@+id/orderValue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="number" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/proposedPrice" />
-
-        <EditText
-            android:id="@+id/proposedPrice"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="number" />
-        <Button
-            android:id="@+id/orderProduct"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@color/dark_green"
-            android:onClick="clickOrderProduct"
-            android:padding="5dp"
-            android:text="@string/orderProduct"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
     </LinearLayout>
-</LinearLayout>
 </ScrollView>
