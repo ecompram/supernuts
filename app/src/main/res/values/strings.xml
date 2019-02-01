@@ -36,4 +36,7 @@
     <string name="myInformation_title">اطلاعات من</string>
     <string name="myOrders_title">خرید های من</string>
     <string name="mySales_title">فروش های من</string>
+    <string name="common_save">ذخیره</string>
+
+    <string name="common_saveProblem_message">ثبت اطلاعات با مشکل روبرو شد، لطفا دوباره تلاش نمایید.</string>
 </resources>

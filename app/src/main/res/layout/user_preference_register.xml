@@ -8,7 +8,31 @@
     android:textDirection="rtl"
     android:visibility="visible">
 
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        >
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/systemUserName"
+            android:hint="نام خود را وارد نمایید"
+            />
+    </android.support.design.widget.TextInputLayout>
 
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        >
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/systemUserFamily"
+            android:hint="فامیل خود را وارد نمایید"
+            />
+    </android.support.design.widget.TextInputLayout>
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"

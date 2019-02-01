@@ -22,9 +22,6 @@ import com.parsjavid.supernuts.models.ApiSuccess;
 import com.parsjavid.supernuts.models.Product;
 import com.squareup.picasso.Picasso;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.math.RoundingMode;
 import java.util.HashMap;
 import java.util.Locale;
@@ -33,7 +30,6 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -180,11 +176,11 @@ public class ProductDetailInfoActivity extends AppCompatActivity {
                                 HSH.getInstance().dialog(dialog);
 
                             } else {
-                                HSH.getInstance().showtoast(ProductDetailInfoActivity.this, message == null ? getString(R.string.productOrder_saveOrderProblem_message) : message);
+                                HSH.getInstance().showToast(ProductDetailInfoActivity.this, message == null ? getString(R.string.productOrder_saveOrderProblem_message) : message);
                             }
 
                     } else {
-                        HSH.getInstance().showtoast(ProductDetailInfoActivity.this, getString(R.string.productOrder_saveOrderProblem_message));
+                        HSH.getInstance().showToast(ProductDetailInfoActivity.this, getString(R.string.productOrder_saveOrderProblem_message));
                         //HSH.getInstance().editor(getString(R.string.systemUser_latest_order), getString(R.string.productOrder_saveOrderProblem_message));
                     }
                 }
@@ -192,12 +188,12 @@ public class ProductDetailInfoActivity extends AppCompatActivity {
                 @Override
                 public void onFailure(Call<ApiSuccess> call, Throwable t) {
                     //HSH.getInstance().editor(getString(R.string.systemUser_latest_order), getString(R.string.productOrder_saveOrderProblem_message));
-                    HSH.getInstance().showtoast(ProductDetailInfoActivity.this, getString(R.string.productOrder_saveOrderProblem_message));
+                    HSH.getInstance().showToast(ProductDetailInfoActivity.this, getString(R.string.productOrder_saveOrderProblem_message));
                 }
             });
         }else{
            // HSH.getInstance().editor(getString(R.string.systemUser_latest_order), errorMessage);
-            HSH.getInstance().showtoast(ProductDetailInfoActivity.this, errorMessage);
+            HSH.getInstance().showToast(ProductDetailInfoActivity.this, errorMessage);
         }
     }
 }

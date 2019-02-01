@@ -27,6 +27,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.parsjavid.supernuts.activities.ProductDetailInfoActivity;
+import com.parsjavid.supernuts.activities.ProductInfoForSaveActivity;
 import com.parsjavid.supernuts.adapters.ProductAdapter;
 import com.parsjavid.supernuts.interfaces.ApiInterface;
 import com.parsjavid.supernuts.models.Product;
@@ -63,6 +64,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        FloatingActionButton addProductFab = (FloatingActionButton) findViewById(R.id.addProductFab);
+        addProductFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this, ProductInfoForSaveActivity.class);
+                startActivity(intent);
+            }
+        });
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

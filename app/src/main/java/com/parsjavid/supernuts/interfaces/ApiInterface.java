@@ -18,6 +18,7 @@ package com.parsjavid.supernuts.interfaces;
 
 import com.parsjavid.supernuts.BuildConfig;
 import com.parsjavid.supernuts.models.ApiSuccess;
+import com.parsjavid.supernuts.models.Customer;
 import com.parsjavid.supernuts.models.Product;
 
 import java.util.List;
@@ -33,6 +34,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
@@ -40,15 +42,6 @@ import retrofit2.http.PartMap;
 import retrofit2.http.Path;
 
 public interface ApiInterface {
-
-//    @FormUrlEncoded
-//    @POST(BuildConfig.getCallLog)
-//    Observable<List<CallLogItem>> getCallLog(@FieldMap Map<String, String> data);
-//
-//    @FormUrlEncoded
-//    @POST(BuildConfig.addcallLog)
-//    Call<ResponseBody> AddCallLog(@FieldMap Map<String, String> data);
-
     @FormUrlEncoded
     @POST(BuildConfig.Register)
     Call<ResponseBody> EmdadApplicantRegister(@FieldMap Map<String, String> data);
@@ -66,6 +59,14 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST(BuildConfig.SaveProductOrder)
     Call<ApiSuccess> SaveProductOrder(@FieldMap Map<String, String> data);
+
+    @Multipart
+    @POST("api/webapiproduct/save")
+    Call<ApiSuccess> SaveProduct(@Part("file\"; filename=\"pp.png\" ") RequestBody file ,
+                                 @Part("FirstName") RequestBody fname, @Part("Id") RequestBody id);
+    @FormUrlEncoded
+    @POST(BuildConfig.SaveCustomer)
+    Call<ApiSuccess> SaveCustomer(@FieldMap Map<String,String> data);
 //
 //    @FormUrlEncoded
 //    @POST("api/apiNews/")

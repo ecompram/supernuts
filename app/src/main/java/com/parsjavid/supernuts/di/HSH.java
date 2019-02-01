@@ -79,6 +79,9 @@ public class HSH {
 
     private static final HSH ourInstance = new HSH();
     private static String[] englishNumbers = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+    public static final int MESSAGE_TYPE_NORMAL=1;
+    public static final int MESSAGE_TYPE_WARNING=2;
+    public static final int MESSAGE_TYPE_ERROR=3;
 
     private HSH() {
     }
@@ -133,11 +136,15 @@ public class HSH {
     public static void showViews(FrameLayout v) {
         v.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2)).start();
     }
-
-    public static void showtoast(Context cn, String s) {
+    public static  void showToast(Context cn,String s ){
+        showToast(cn, s, MESSAGE_TYPE_NORMAL);
+    }
+    public static void showToast(Context cn, String s, int messageType) {
         LayoutInflater inflater = (LayoutInflater) cn.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View toastRoot = inflater.inflate(R.layout.custom_toast, null);
         TextView t = toastRoot.findViewById(R.id.text);
+        if(messageType==MESSAGE_TYPE_ERROR)
+            t.setBackgroundColor(Color.parseColor("#b61827"));
         t.setText(s);
         Toast toast = new Toast(cn);
         toast.setView(toastRoot);

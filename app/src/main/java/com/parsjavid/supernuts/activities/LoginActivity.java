@@ -2,7 +2,6 @@ package com.parsjavid.supernuts.activities;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -20,7 +19,6 @@ import android.widget.TextView;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.parsjavid.supernuts.Application;
-import com.parsjavid.supernuts.MainActivity;
 import com.parsjavid.supernuts.R;
 import com.parsjavid.supernuts.di.HSH;
 import com.parsjavid.supernuts.interfaces.ApiInterface;
@@ -110,7 +108,7 @@ public class LoginActivity extends BaseActivity {
     public void clickLogin(final View view) {
         String mobile = et_mobile.getText().toString();
         if (mobile.equals("") || !mobile.startsWith("09") || mobile.length() != 11) {
-            HSH.getInstance().showtoast(LoginActivity.this, "لطفا شماره موبایل معتبر وارد نمایید.");
+            HSH.getInstance().showToast(LoginActivity.this, "لطفا شماره موبایل معتبر وارد نمایید.");
         } else {
             final String PN = ((EditText) findViewById(R.id.et_mobile)).getText().toString().trim();
             final SweetAlertDialog dialog = new SweetAlertDialog(LoginActivity.this, SweetAlertDialog.NORMAL_TYPE);
@@ -186,7 +184,7 @@ public class LoginActivity extends BaseActivity {
                             v.setOnClickListener(v -> {
                                 String s = et_code.getText().toString().trim();
                                 if (s.equals(""))
-                                    HSH.getInstance().showtoast(LoginActivity.this, "لطفا کد تایید دریافتی را وارد نمایید");
+                                    HSH.getInstance().showToast(LoginActivity.this, "لطفا کد تایید دریافتی را وارد نمایید");
                                 else {
                                     progressBar.setVisibility(View.VISIBLE);
                                     v.setEnabled(false);
@@ -210,17 +208,17 @@ public class LoginActivity extends BaseActivity {
                     try {
                         switch (response.code()) {
                             case 400:
-                                HSH.getInstance().showtoast(LoginActivity.this, "ابتدا عضو شوید");
+                                HSH.getInstance().showToast(LoginActivity.this, "ابتدا عضو شوید");
                                 break;
                             case 500:
-                                HSH.getInstance().showtoast(LoginActivity.this, "لطفا دقایقی بعد مجددا تلاش کنید");
+                                HSH.getInstance().showToast(LoginActivity.this, "لطفا دقایقی بعد مجددا تلاش کنید");
                                 break;
                             default:
-                                HSH.getInstance().showtoast(LoginActivity.this, "خطا در برقراری ارتباط با سرور");
+                                HSH.getInstance().showToast(LoginActivity.this, "خطا در برقراری ارتباط با سرور");
                                 break;
                         }
                     } catch (Exception e) {
-                        HSH.getInstance().showtoast(LoginActivity.this, "خطا در ارتباط با سرور");
+                        HSH.getInstance().showToast(LoginActivity.this, "خطا در ارتباط با سرور");
                     }
                 }
             }
@@ -284,7 +282,7 @@ public class LoginActivity extends BaseActivity {
                         Integer Type = Integer.parseInt(result.getString(getString(R.string.Type)));
                         if (Type == 0) {
                             String Message = result.getString("Message");
-                            HSH.getInstance().showtoast(LoginActivity.this, Message);
+                            HSH.getInstance().showToast(LoginActivity.this, Message);
                             v.setEnabled(true);
                             progressBar.setVisibility(View.GONE);
                         } else {
@@ -304,7 +302,7 @@ public class LoginActivity extends BaseActivity {
                         e.printStackTrace();
                     }
                 } else {
-                    HSH.getInstance().showtoast(LoginActivity.this, "خطا در برقراری ارتباط با سرور");
+                    HSH.getInstance().showToast(LoginActivity.this, "خطا در برقراری ارتباط با سرور");
                     v.setEnabled(true);
                     et_mobile.setEnabled(true);
                     progressBar.setVisibility(View.GONE);
