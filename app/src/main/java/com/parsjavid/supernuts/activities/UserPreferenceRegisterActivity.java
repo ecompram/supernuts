@@ -45,10 +45,10 @@ public class UserPreferenceRegisterActivity extends BaseActivity {
             startActivity(new Intent(UserPreferenceRegisterActivity.this, LoginActivity.class));
             finish();
         }
-//        else if (!Application.preferences.getString(getString(R.string.preference_PersonType), "0").equals("0")) {
-//            startActivity(new Intent(UserPreferenceRegisterActivity.this, MainActivity.class));
-//            finish();
-//        }
+        else if (!Application.preferences.getString(getString(R.string.preference_PersonType), "0").equals("0")) {
+            startActivity(new Intent(UserPreferenceRegisterActivity.this, MainActivity.class));
+            finish();
+        }
 
     }
 

@@ -123,15 +123,26 @@ public class ProductInfoForSaveActivity extends BaseActivity {
     }
     public void clickSaveProductInfo(final View view ){
 
-        File file=new File(filePath);
-        RequestBody fbody=RequestBody.create(MediaType.parse("image/*"),file);
+        if(filePath!=null) {
+            File file = new File(filePath);
+            RequestBody fbody = RequestBody.create(MediaType.parse("image/*"), file);
+        }
+        if(productName.getText().toString().trim().equals(""))
+            productName.setError("لطفا نام کالا را وارد نمایید.");
+        else if(productCount.getText().toString().trim().equals(""))
+            productCount.setError("لطفا مقدار کالا را وارد نمایید.");
 
-        RequestBody priceBody = RequestBody.create(MediaType.parse("text/plain"), productPrice.getText().toString());
-        RequestBody nameBody = RequestBody.create(MediaType.parse("text/plain"), productName.getText().toString());
-        RequestBody descBody = RequestBody.create(MediaType.parse("text/plain"), productDescription.getText().toString());
-        RequestBody countBody = RequestBody.create(MediaType.parse("text/plain"), productCount.getText().toString());
+        else if(productPrice.getText().toString().trim().equals(""))
+            productPrice.setError("لطفا قیمت کالا را وارد نمایید.");
 
-
+        else if(productDescription.getText().toString().trim().equals(""))
+            productDescription.setError("لطفا شرح کالا را وارد نمایید.");
+        else {
+            RequestBody priceBody = RequestBody.create(MediaType.parse("text/plain"), productPrice.getText().toString());
+            RequestBody nameBody = RequestBody.create(MediaType.parse("text/plain"), productName.getText().toString());
+            RequestBody descBody = RequestBody.create(MediaType.parse("text/plain"), productDescription.getText().toString());
+            RequestBody countBody = RequestBody.create(MediaType.parse("text/plain"), productCount.getText().toString());
+        }
     }
     private String getPath(Uri uri) {
         String[] projection = { MediaStore.MediaColumns.DATA };
