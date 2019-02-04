@@ -40,6 +40,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.PartMap;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ApiInterface {
     @FormUrlEncoded
@@ -50,7 +51,7 @@ public interface ApiInterface {
     Call<List<Product>> LoadProducts();
 
     @GET(BuildConfig.LoadProductById)
-    Call<Product> LoadProductById(@Path("productId")Long productId);
+    Call<Product> LoadProductById(@Path("productId") Long productId);
 
     @FormUrlEncoded
     @POST(BuildConfig.Verification)
@@ -62,12 +63,17 @@ public interface ApiInterface {
 
     @Multipart
     @POST("api/webapiproduct/save")
-    Call<ApiSuccess> SaveProduct(@Part("file\"; filename=\"pp.png\" ") RequestBody file ,
-                                 @Part("FirstName") RequestBody fname, @Part("Id") RequestBody id);
+    Call<ApiSuccess> SaveProduct(@Part MultipartBody.Part file,
+                                 @Part("token") RequestBody token, @Part("mobile") RequestBody mobile,
+                                 @Part("productName") RequestBody productName, @Part("productDescription") RequestBody productDescription,
+                                 @Part("productCount") RequestBody productCount, @Part("productPrice") RequestBody productPrice,
+                                 @Part("ProductBaseGroupId") RequestBody ProductBaseGroupId);
+
     @FormUrlEncoded
     @POST(BuildConfig.SaveCustomer)
-    Call<ApiSuccess> SaveCustomer(@FieldMap Map<String,String> data);
-//
+    Call<ApiSuccess> SaveCustomer(@FieldMap Map<String, String> data);
+
+    //
 //    @FormUrlEncoded
 //    @POST("api/apiNews/")
 //    Observable<List<CommonFeedItem>> News(@FieldMap Map<String, String> data);

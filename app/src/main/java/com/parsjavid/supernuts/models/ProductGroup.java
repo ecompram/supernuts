@@ -1,31 +1,17 @@
 package com.parsjavid.supernuts.models;
 
-public class ProductGroup {
+public class ProductGroup extends EntityBase{
     public static final long Pistachio_Kernel=3;
     public static final long Pistachio=4;
     public static final long Walnut=5;
     public static final long Almond=6;
-
-    private String name;
-    private long id;
     private long UnitCode;
     private Long parentId;
     private String slug;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
+    public ProductGroup(){}
+    public ProductGroup(long _id,String _name){
+        id=_id;
+        name=_name;
     }
 
     public long getUnitCode() {
