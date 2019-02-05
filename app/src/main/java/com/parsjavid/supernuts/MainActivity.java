@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 productCombo.setAdapter(productComboAdapter);
                 providerCombo.setAdapter(providerComboAdapter);
 
-                new AlertDialog.Builder(MainActivity.this, R.style.DialogTheme)
+                new AlertDialog.Builder(MainActivity.this, R.style.Theme_AppCompat_DayNight_Dialog_Alert)
                         .setTitle(getString(R.string.common_search))
                         .setCancelable(true)
                         .setView(alertLayout)

@@ -1,6 +1,7 @@
 package com.parsjavid.supernuts.activities;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -9,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -17,6 +19,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -25,6 +28,7 @@ import com.parsjavid.supernuts.Application;
 import com.parsjavid.supernuts.MainActivity;
 import com.parsjavid.supernuts.R;
 import com.parsjavid.supernuts.adapters.CustomEntityAdapter;
+import com.parsjavid.supernuts.di.HSH;
 import com.parsjavid.supernuts.interfaces.ApiInterface;
 import com.parsjavid.supernuts.models.ApiSuccess;
 import com.parsjavid.supernuts.models.Product;
@@ -62,6 +66,7 @@ public class ProductInfoForSaveActivity extends BaseActivity {
     @Inject
     Retrofit retrofit;
     private long productGroupId;
+    ProgressBar progressBar;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,8 +77,9 @@ public class ProductInfoForSaveActivity extends BaseActivity {
         productDescription = findViewById(R.id.txtProductDescription);
         productCount = findViewById(R.id.txtProductCount);
         productName=findViewById(R.id.txtProductName);
-
         productImage=findViewById(R.id.productImage);
+        progressBar=findViewById(R.id.saveProductProgressBar);
+        progressBar.setVisibility(View.GONE);
 
         Application.getmainComponent().Inject(this);
 
@@ -207,18 +213,34 @@ public class ProductInfoForSaveActivity extends BaseActivity {
 
             MultipartBody.Part multipartBody =MultipartBody.Part.createFormData("file",file.getName(),requestFile);
 
+            progressBar.setVisibility(View.VISIBLE);
             // finally, execute the request
             Call<ApiSuccess> apiSuccessCall = retrofit.create(ApiInterface.class).SaveProduct(multipartBody,tokenBody,mobileBody,
                     nameBody,descBody,countBody,priceBody,productBaseGroupBody);
             apiSuccessCall.enqueue(new Callback<ApiSuccess>() {
                 @Override
                 public void onResponse(Call<ApiSuccess> call, Response<ApiSuccess> response) {
-                    Log.v("Upload", "success");
+                    progressBar.setVisibility(View.GONE);
+
+                    new AlertDialog.Builder(ProductInfoForSaveActivity.this, R.style.Theme_AppCompat_DayNight_Dialog_Alert)
+                            .setCancelable(false)
+                            .setMessage(getString(R.string.common_saveProduct_message))
+                            .setPositiveButton(getString(R.string.common_confirm), new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    Intent intent=new Intent(ProductInfoForSaveActivity.this,MainActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
+                            })
+                            .create()
+                            .show();
                 }
 
                 @Override
                 public void onFailure(Call<ApiSuccess> call, Throwable t) {
-                    Log.e("Upload error:", t.getMessage());
+                    progressBar.setVisibility(View.GONE);
+                    HSH.showToast(ProductInfoForSaveActivity.this,getString(R.string.common_saveProblem_message),HSH.MESSAGE_TYPE_ERROR);
                 }
             });
         }

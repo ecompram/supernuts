@@ -39,4 +39,7 @@
     <string name="common_save">ذخیره</string>
 
     <string name="common_saveProblem_message">ثبت اطلاعات با مشکل روبرو شد، لطفا دوباره تلاش نمایید.</string>
+    <string name="common_saveSuccess_message">ثبت اطلاعات با موفقیت انجام شد.</string>
+
+    <string name="common_saveProduct_message">ثبت کالا با موفقیت انجام شد. کارشناسان فروش ما، کالا را بررسی و سپس آن را تا چند ساعت آینده تایید خواهند کرد.</string>
 </resources>
