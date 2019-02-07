@@ -314,6 +314,11 @@ public class LoginActivity extends BaseActivity {
                 CheckPhoneNumber(v, params);
             }
         });
-
     }
+/*
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_login;
+    }
+*/
 }

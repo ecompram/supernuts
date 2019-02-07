@@ -1,10 +1,12 @@
 package com.parsjavid.supernuts.models;
 
-public class ApiSuccess {
+import java.util.List;
+
+public class ApiSuccess<T> {
     private int resultKey;
     private String errorMessage;
     private String message;
-
+    private List<T> data;
     public int getResultKey() {
         return resultKey;
     }
@@ -27,5 +29,13 @@ public class ApiSuccess {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public List<T> getData() {
+        return data;
+    }
+
+    public void setData(List<T> data) {
+        this.data = data;
     }
 }

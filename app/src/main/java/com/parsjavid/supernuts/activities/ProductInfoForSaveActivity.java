@@ -286,4 +286,10 @@ public class ProductInfoForSaveActivity extends BaseActivity {
         productImage.setImageBitmap(bitmap);
 
     }
+/*
+    @Override
+    protected int getLayoutId() {
+        return R.layout.product_info_for_save;
+    }
+*/
 }

@@ -11,4 +11,5 @@
     <color name="black">#000000</color>
     <color name="price">#999999</color>
     <color name="title">#222222</color>
+    <color name="grey">#b4b4b4</color>
 </resources>

@@ -11,7 +11,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".activities.LoginActivity"
             android:screenOrientation="portrait"
             android:launchMode="singleTop">
@@ -31,7 +31,10 @@
         <activity android:name=".activities.ProductDetailInfoActivity"
             android:screenOrientation="portrait" android:windowSoftInputMode="adjustResize"/>
 
-        <activity android:name=".activities.ProductInfoForSaveActivity" android:theme="@style/AppTheme"
+        <activity android:name=".activities.ProductInfoForSaveActivity" android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait" android:windowSoftInputMode="adjustResize"/>
+
+        <activity android:name=".activities.UserProfileActivity" android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait" android:windowSoftInputMode="adjustResize"/>
 
         <service

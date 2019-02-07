@@ -16,7 +16,7 @@ import java.math.RoundingMode;
 import java.util.List;
 import java.util.Locale;
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHolder> {
+public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
 
     public interface OnItemClickListener{
         void onItemClick(Product item);
@@ -34,11 +34,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
         this.productList = productList;
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class ProductViewHolder extends RecyclerView.ViewHolder {
         public TextView title, price, supplier;
         public ImageView imageView;
 
-        public MyViewHolder(View view) {
+        public ProductViewHolder(View view) {
             super(view);
             title = (TextView) view.findViewById(R.id.title);
             price = (TextView) view.findViewById(R.id.price);
@@ -63,15 +63,15 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
     }
 
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ProductViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.product_list_row, parent, false);
 
-        return new MyViewHolder(itemView);
+        return new ProductViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(ProductViewHolder holder, int position) {
 
         if (productList != null) {
             Product product = productList.get(position);

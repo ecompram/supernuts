@@ -131,8 +131,12 @@ public class UserPreferenceRegisterActivity extends BaseActivity {
                     HSH.showToast(UserPreferenceRegisterActivity.this,getString(R.string.common_saveProblem_message),HSH.MESSAGE_TYPE_ERROR);
                 }
             });
-
-
         }
     }
+/*
+    @Override
+    protected int getLayoutId() {
+        return R.layout.user_preference_register;
+    }
+*/
 }

@@ -73,6 +73,11 @@ public interface ApiInterface {
     @POST(BuildConfig.SaveCustomer)
     Call<ApiSuccess> SaveCustomer(@FieldMap Map<String, String> data);
 
+    @FormUrlEncoded
+    @POST("api/webapiproduct/loadListForProvider")
+    Call<ApiSuccess<Product>> LoadProductsForProvider(@FieldMap Map<String, String> data);
+
+
     //
 //    @FormUrlEncoded
 //    @POST("api/apiNews/")
